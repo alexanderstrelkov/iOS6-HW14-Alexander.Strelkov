@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		116512B628513B5E00CE9ACC /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116512B528513B5E00CE9ACC /* CustomCollectionViewCell.swift */; };
 		11C28877284FC2FF00A66068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C28876284FC2FF00A66068 /* AppDelegate.swift */; };
 		11C2887B284FC2FF00A66068 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2887A284FC2FF00A66068 /* ViewController.swift */; };
 		11C2887E284FC2FF00A66068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C2887C284FC2FF00A66068 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		116512B528513B5E00CE9ACC /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		11C28873284FC2FF00A66068 /* iOS6-HW14-Alexander.Strelkov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS6-HW14-Alexander.Strelkov.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C28876284FC2FF00A66068 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11C2887A284FC2FF00A66068 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				11C2887F284FC30100A66068 /* Assets.xcassets */,
 				11C28881284FC30100A66068 /* LaunchScreen.storyboard */,
 				11C28884284FC30100A66068 /* Info.plist */,
+				116512B528513B5E00CE9ACC /* CustomCollectionViewCell.swift */,
 			);
 			path = "iOS6-HW14-Alexander.Strelkov";
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11C28895284FC7E100A66068 /* FourthViewController.swift in Sources */,
+				116512B628513B5E00CE9ACC /* CustomCollectionViewCell.swift in Sources */,
 				11C2887B284FC2FF00A66068 /* ViewController.swift in Sources */,
 				11C28877284FC2FF00A66068 /* AppDelegate.swift in Sources */,
 				11C28892284FC77A00A66068 /* ThirdViewController.swift in Sources */,
