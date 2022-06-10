@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		116512B628513B5E00CE9ACC /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116512B528513B5E00CE9ACC /* CustomCollectionViewCell.swift */; };
+		116512B928523CBA00CE9ACC /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116512B728523CBA00CE9ACC /* CustomCollectionCell.swift */; };
+		116512BA28523CBA00CE9ACC /* CustomCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116512B828523CBA00CE9ACC /* CustomCollectionCell.xib */; };
 		11C28877284FC2FF00A66068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C28876284FC2FF00A66068 /* AppDelegate.swift */; };
 		11C2887B284FC2FF00A66068 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2887A284FC2FF00A66068 /* ViewController.swift */; };
 		11C2887E284FC2FF00A66068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C2887C284FC2FF00A66068 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		116512B528513B5E00CE9ACC /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		116512B728523CBA00CE9ACC /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
+		116512B828523CBA00CE9ACC /* CustomCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionCell.xib; sourceTree = "<group>"; };
 		11C28873284FC2FF00A66068 /* iOS6-HW14-Alexander.Strelkov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS6-HW14-Alexander.Strelkov.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C28876284FC2FF00A66068 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11C2887A284FC2FF00A66068 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 				11C28881284FC30100A66068 /* LaunchScreen.storyboard */,
 				11C28884284FC30100A66068 /* Info.plist */,
 				116512B528513B5E00CE9ACC /* CustomCollectionViewCell.swift */,
+				116512B728523CBA00CE9ACC /* CustomCollectionCell.swift */,
+				116512B828523CBA00CE9ACC /* CustomCollectionCell.xib */,
 			);
 			path = "iOS6-HW14-Alexander.Strelkov";
 			sourceTree = "<group>";
@@ -169,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116512BA28523CBA00CE9ACC /* CustomCollectionCell.xib in Resources */,
 				11C28883284FC30100A66068 /* LaunchScreen.storyboard in Resources */,
 				11C28880284FC30100A66068 /* Assets.xcassets in Resources */,
 				11C2887E284FC2FF00A66068 /* Main.storyboard in Resources */,
@@ -186,6 +193,7 @@
 				116512B628513B5E00CE9ACC /* CustomCollectionViewCell.swift in Sources */,
 				11C2887B284FC2FF00A66068 /* ViewController.swift in Sources */,
 				11C28877284FC2FF00A66068 /* AppDelegate.swift in Sources */,
+				116512B928523CBA00CE9ACC /* CustomCollectionCell.swift in Sources */,
 				11C28892284FC77A00A66068 /* ThirdViewController.swift in Sources */,
 				11C2888F284FC6B500A66068 /* SecondViewController.swift in Sources */,
 				11C2888B284FC57400A66068 /* FirstViewController.swift in Sources */,
