@@ -24,7 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         secondViewController.tabBarItem = UITabBarItem(title: "Для Вас", image: UIImage(systemName: "heart.text.square"), tag: 1)
 
         let thirdViewController = ThirdViewController()
+        let thirdNavigationController = UINavigationController(rootViewController: thirdViewController)
+        thirdNavigationController.navigationBar.prefersLargeTitles = true
         thirdViewController.tabBarItem = UITabBarItem(title: "Альбомы", image: UIImage(systemName: "rectangle.stack.fill"), tag: 2)
+        
 
         let fourthViewController = FourthViewController()
         fourthViewController.tabBarItem = UITabBarItem(title: "Поиск", image: UIImage(systemName: "magnifyingglass"), tag: 3)
@@ -32,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tapBarController.setViewControllers([
             firstViewController,
             secondViewController,
-            thirdViewController,
+            thirdNavigationController,
             fourthViewController
         ], animated: true)
         
