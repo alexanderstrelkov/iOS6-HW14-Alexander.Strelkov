@@ -33,22 +33,20 @@ class ThirdViewController: UIViewController {
         return collection
     }()
     
-    private var albumLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        
-        
-        label.text = "Альбомы"
-        
-        label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 35)
-        return label
+    private var plusButton: UIButton = {
+        var button = UIButton()
+        button.setTitle("+", for: .normal)
+        button.backgroundColor = .systemBlue
+        return button
     }()
+    
+    
     
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Альбомы"
         view.backgroundColor = .white
         configCells()
         collectionView.backgroundColor = .white
@@ -72,28 +70,19 @@ class ThirdViewController: UIViewController {
     //MARK: - Settings
     
     private func setupHierarchy() {
-        view.addSubview(albumLabel)
+//        view.addSubview(albumLabel)
         view.addSubview(collectionView)
-        
-        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
     }
     
     private func setupLayout() {
         
-        albumLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            albumLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            albumLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10)
-        ])
-        
-        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: albumLabel.bottomAnchor, constant: 5),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            collectionView.heightAnchor.constraint(equalTo: collectionView.widthAnchor, constant: 40)
-        ])
+ 
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+            collectionView.heightAnchor.constraint(equalTo: collectionView.widthAnchor, constant: 40).isActive = true
     }
     
     //MARK: - Functions
