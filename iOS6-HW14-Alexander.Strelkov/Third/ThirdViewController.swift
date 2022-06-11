@@ -7,40 +7,46 @@
 
 import UIKit
 
-struct Section {
-    let options: [CollectionViewType]
-}
-enum CollectionViewType {
-    case imageCell(model: CustomData)
-    
-}
-struct CustomData {
-    var image: UIImage?
-}
+//struct Section {
+//    let options: [CollectionViewType]
+//}
+//
+//enum CollectionViewType {
+//    case imageCell(model: CustomData)
+//}
+
+//struct CustomData {
+//    var image: UIImage
+//}
 
 class ThirdViewController: UIViewController {
     
+    enum Section: Int, CaseIterable {
+        case albumBody
+
+    }
+    
     var data = [Section]()
+    
+    var image0 = UIImage(named: "image0")
+    var image1 = UIImage(named: "image1")
+    var image2 = UIImage(named: "image2")
+    var image3 = UIImage(named: "image3")
+    var image4 = UIImage(named: "image4")
+    var image5 = UIImage(named: "image5")
+    var image6 = UIImage(named: "image6")
+    var image7 = UIImage(named: "image7")
+    var image8 = UIImage(named: "image8")
+    var image9 = UIImage(named: "image9")
+    var image10 = UIImage(named: "image10")
+    var image11 = UIImage(named: "image11")
+    
     
     //MARK: - Views
     
-    private var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
-        return collection
-    }()
+    var photoCollectionView: UICollectionView! = nil
     
-    private var plusButton: UIButton = {
-        var button = UIButton()
-        button.setTitle("+", for: .normal)
-        button.backgroundColor = .systemBlue
-        return button
-    }()
-    
-    
+    var dataSource: UICollectionViewDiffableDataSource<Section, CustomCellModel>! = nil
     
     //MARK: - Lifecycle
     
@@ -48,18 +54,18 @@ class ThirdViewController: UIViewController {
         super.viewDidLoad()
         title = "Альбомы"
         view.backgroundColor = .white
-        configCells()
-        collectionView.backgroundColor = .white
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        configureCollectionView()
+        configureDataSource()
     }
+    
+    
     
     //MARK: - Initial
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
         setupHierarchy()
-        setupLayout()
+        //        setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -70,59 +76,98 @@ class ThirdViewController: UIViewController {
     //MARK: - Settings
     
     private func setupHierarchy() {
-//        view.addSubview(albumLabel)
-        view.addSubview(collectionView)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
-    }
-    
-    private func setupLayout() {
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
- 
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-            collectionView.heightAnchor.constraint(equalTo: collectionView.widthAnchor, constant: 40).isActive = true
     }
     
     //MARK: - Functions
     
-    func configCells() {
-        data.append(Section(options: [
-            .imageCell(model: CustomData(image: UIImage(named: "image0"))),
-            .imageCell(model: CustomData(image: UIImage(named: "image1"))),
-            .imageCell(model: CustomData(image: UIImage(named: "image2"))),
-            .imageCell(model: CustomData(image: UIImage(named: "image3"))),
-            .imageCell(model: CustomData(image: UIImage(named: "image4"))),
-            .imageCell(model: CustomData(image: UIImage(named: "image5"))),
-            .imageCell(model: CustomData(image: UIImage(named: "image6"))),
-            .imageCell(model: CustomData(image: UIImage(named: "image7"))),
-        ]))
+    private func createLayout() -> UICollectionViewLayout {
+        let sectionProvider: UICollectionViewCompositionalLayoutSectionProvider = { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+            guard let sectionKind = Section(rawValue: sectionIndex) else { return nil }
+            let section = self.layoutSection(for: sectionKind, layoutEnvironment: layoutEnvironment)
+            return section
+        }
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 16.0
+        let layout = UICollectionViewCompositionalLayout(sectionProvider: sectionProvider, configuration: config)
+        return layout
     }
+    
+    private func layoutSection(for section: Section, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
+        switch section {
+        case .albumBody:
+            return albumsSection()
+//        case .strokesBody:
+//            return appsSection()
+        }
+    }
+    
+    private func albumsSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets (top: 2, leading: 2, bottom: 2, trailing: 2)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 2)
+        group.interItemSpacing = .fixed(8.0)
+        
+        let rootGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(350))
+        let rootGroup = NSCollectionLayoutGroup.horizontal(layoutSize: rootGroupSize, subitem: group, count: 2)
+        rootGroup.interItemSpacing = .fixed(8.0)
+        let section = NSCollectionLayoutSection(group: rootGroup)
+        section.orthogonalScrollingBehavior = .groupPaging
+        return section
+    }
+
+    private func itemsForCells() -> [CustomCellModel] {
+        return [
+            CustomCellModel(image0!),
+            CustomCellModel(image1!),
+            CustomCellModel(image2!),
+            CustomCellModel(image3!),
+            CustomCellModel(image4!),
+            CustomCellModel(image5!),
+            CustomCellModel(image6!),
+            CustomCellModel(image7!),
+            CustomCellModel(image8!),
+            CustomCellModel(image9!),
+            CustomCellModel(image10!),
+            CustomCellModel(image11!)
+        ]
+    }
+    
 }
 
-extension ThirdViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2.5, height: collectionView.frame.width / 2)
+extension ThirdViewController {
+    func configureCollectionView() {
+        let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
+        view.addSubview(collectionView)
+        collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        collectionView.backgroundColor = .systemBackground
+        collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
+        photoCollectionView = collectionView
     }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data[section].options.count
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let model = data[indexPath.section].options[indexPath.row]
-        
-        switch model.self {
-        case .imageCell(let model):
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: CustomCollectionViewCell.identifier,
-                for: indexPath) as? CustomCollectionViewCell else {
-                    return UICollectionViewCell()
+    func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, CustomCellModel>(
+            collectionView: photoCollectionView) { (collectionView: UICollectionView, indexPath: IndexPath, customCell: CustomCellModel) -> UICollectionViewCell? in
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell else {
+                    fatalError()
                 }
-            cell.configureCell(with: model)
-            return cell
-        }
+                cell.imageView.image = customCell.image
+                return cell
+            }
+        let snapshot = snapshotForCurrentState()
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    
+    
+    func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Section, CustomCellModel> {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, CustomCellModel>()
+        snapshot.appendSections([Section.albumBody])
+        let items = itemsForCells()
+        snapshot.appendItems(items)
+        return snapshot
     }
 }
