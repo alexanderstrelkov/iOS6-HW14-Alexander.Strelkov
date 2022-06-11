@@ -7,23 +7,11 @@
 
 import UIKit
 
-//struct Section {
-//    let options: [CollectionViewType]
-//}
-//
-//enum CollectionViewType {
-//    case imageCell(model: CustomData)
-//}
-
-//struct CustomData {
-//    var image: UIImage
-//}
-
 class ThirdViewController: UIViewController {
     
     enum Section: Int, CaseIterable {
         case albumBody
-
+    
     }
     
     var data = [Section]()
@@ -109,7 +97,7 @@ class ThirdViewController: UIViewController {
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 2)
-        group.interItemSpacing = .fixed(8.0)
+        group.interItemSpacing = .fixed(40.0)
         
         let rootGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(350))
         let rootGroup = NSCollectionLayoutGroup.horizontal(layoutSize: rootGroupSize, subitem: group, count: 2)
@@ -121,18 +109,18 @@ class ThirdViewController: UIViewController {
 
     private func itemsForCells() -> [CustomCellModel] {
         return [
-            CustomCellModel(image0!),
-            CustomCellModel(image1!),
-            CustomCellModel(image2!),
-            CustomCellModel(image3!),
-            CustomCellModel(image4!),
-            CustomCellModel(image5!),
-            CustomCellModel(image6!),
-            CustomCellModel(image7!),
-            CustomCellModel(image8!),
-            CustomCellModel(image9!),
-            CustomCellModel(image10!),
-            CustomCellModel(image11!)
+            CustomCellModel(image: image0!, title: "Recent", subtitle: "34"),
+            CustomCellModel(image: image1!, title: "Instagram", subtitle: "573"),
+            CustomCellModel(image: image2!, title: "WhatsApp", subtitle: "879"),
+            CustomCellModel(image: image3!, title: "Work", subtitle: "55"),
+            CustomCellModel(image: image4!, title: "Journes", subtitle: "290"),
+            CustomCellModel(image: image5!, title: "My Photos", subtitle: "150"),
+            CustomCellModel(image: image6!, title: "Favorites", subtitle: "80"),
+            CustomCellModel(image: image7!, title: "Snapchat", subtitle: "10"),
+            CustomCellModel(image: image8!, title: "Just pics", subtitle: "50"),
+            CustomCellModel(image: image9!, title: "Trash", subtitle: "15"),
+            CustomCellModel(image: image10!, title: "Wallpapers", subtitle: "30"),
+            CustomCellModel(image: image11!, title: "VK", subtitle: "300")
         ]
     }
     
@@ -154,7 +142,7 @@ extension ThirdViewController {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell else {
                     fatalError()
                 }
-                cell.imageView.image = customCell.image
+                cell.configureCell(titleText: customCell.title, subtitleText: customCell.subtitle, image: customCell.image)
                 return cell
             }
         let snapshot = snapshotForCurrentState()

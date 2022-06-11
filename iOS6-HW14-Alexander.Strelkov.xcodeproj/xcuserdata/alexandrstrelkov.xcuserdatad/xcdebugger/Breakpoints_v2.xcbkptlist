@@ -14,8 +14,8 @@
             filePath = "iOS6-HW14-Alexander.Strelkov/Third/ThirdViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "itemsForCells()"
             landmarkType = "7">
          </BreakpointContent>

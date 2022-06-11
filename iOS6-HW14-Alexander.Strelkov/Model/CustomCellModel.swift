@@ -13,9 +13,13 @@ class CustomCellModel: Hashable {
     private let identifier = UUID()
     
     let image: UIImage
+    let title: String
+    let subtitle: String
     
-    init(_ image: UIImage) {
+    init(image: UIImage, title: String, subtitle: String) {
         self.image = image
+        self.title = title
+        self.subtitle = subtitle
     }
     
     static func == (lhs: CustomCellModel, rhs: CustomCellModel) -> Bool {
