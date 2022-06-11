@@ -12,6 +12,10 @@
 		115FF8662854C343009A0A08 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115FF8652854C343009A0A08 /* ListCollectionViewCell.swift */; };
 		115FF8682854CA31009A0A08 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115FF8672854CA31009A0A08 /* Album.swift */; };
 		115FF86A2854D921009A0A08 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115FF8692854D921009A0A08 /* List.swift */; };
+		115FF86E2854F285009A0A08 /* SecondCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115FF86D2854F285009A0A08 /* SecondCollectionViewCell.swift */; };
+		115FF8702854F2B5009A0A08 /* SecondAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115FF86F2854F2B5009A0A08 /* SecondAlbum.swift */; };
+		115FF8722854FE91009A0A08 /* SecondList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115FF8712854FE91009A0A08 /* SecondList.swift */; };
+		115FF8742854FF00009A0A08 /* SecondListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115FF8732854FF00009A0A08 /* SecondListCollectionViewCell.swift */; };
 		116512B628513B5E00CE9ACC /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116512B528513B5E00CE9ACC /* CustomCollectionViewCell.swift */; };
 		116512B928523CBA00CE9ACC /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116512B728523CBA00CE9ACC /* CustomCollectionCell.swift */; };
 		116512BA28523CBA00CE9ACC /* CustomCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116512B828523CBA00CE9ACC /* CustomCollectionCell.xib */; };
@@ -32,6 +36,10 @@
 		115FF8652854C343009A0A08 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		115FF8672854CA31009A0A08 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		115FF8692854D921009A0A08 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		115FF86D2854F285009A0A08 /* SecondCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCollectionViewCell.swift; sourceTree = "<group>"; };
+		115FF86F2854F2B5009A0A08 /* SecondAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondAlbum.swift; sourceTree = "<group>"; };
+		115FF8712854FE91009A0A08 /* SecondList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondList.swift; sourceTree = "<group>"; };
+		115FF8732854FF00009A0A08 /* SecondListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondListCollectionViewCell.swift; sourceTree = "<group>"; };
 		116512B528513B5E00CE9ACC /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		116512B728523CBA00CE9ACC /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
 		116512B828523CBA00CE9ACC /* CustomCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionCell.xib; sourceTree = "<group>"; };
@@ -62,8 +70,10 @@
 		115FF86128549A3A009A0A08 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				115FF85F285485C3009A0A08 /* PhotoCellModel.swift */,
-				115FF8632854C2D2009A0A08 /* ListCellModel.swift */,
+				115FF8672854CA31009A0A08 /* Album.swift */,
+				115FF8692854D921009A0A08 /* List.swift */,
+				115FF86F2854F2B5009A0A08 /* SecondAlbum.swift */,
+				115FF8712854FE91009A0A08 /* SecondList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -73,6 +83,8 @@
 			children = (
 				116512B528513B5E00CE9ACC /* CustomCollectionViewCell.swift */,
 				115FF8652854C343009A0A08 /* ListCollectionViewCell.swift */,
+				115FF86D2854F285009A0A08 /* SecondCollectionViewCell.swift */,
+				115FF8732854FF00009A0A08 /* SecondListCollectionViewCell.swift */,
 			);
 			path = " Cell";
 			sourceTree = "<group>";
@@ -110,8 +122,8 @@
 				11C28884284FC30100A66068 /* Info.plist */,
 				116512B728523CBA00CE9ACC /* CustomCollectionCell.swift */,
 				116512B828523CBA00CE9ACC /* CustomCollectionCell.xib */,
-				115FF8672854CA31009A0A08 /* Album.swift */,
-				115FF8692854D921009A0A08 /* List.swift */,
+				115FF8632854C2D2009A0A08 /* ListCellModel.swift */,
+				115FF85F285485C3009A0A08 /* PhotoCellModel.swift */,
 			);
 			path = "iOS6-HW14-Alexander.Strelkov";
 			sourceTree = "<group>";
@@ -220,8 +232,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				115FF86E2854F285009A0A08 /* SecondCollectionViewCell.swift in Sources */,
 				115FF8662854C343009A0A08 /* ListCollectionViewCell.swift in Sources */,
 				115FF860285485C3009A0A08 /* PhotoCellModel.swift in Sources */,
+				115FF8742854FF00009A0A08 /* SecondListCollectionViewCell.swift in Sources */,
+				115FF8722854FE91009A0A08 /* SecondList.swift in Sources */,
 				115FF8642854C2D2009A0A08 /* ListCellModel.swift in Sources */,
 				11C28895284FC7E100A66068 /* FourthViewController.swift in Sources */,
 				115FF86A2854D921009A0A08 /* List.swift in Sources */,
@@ -230,6 +245,7 @@
 				11C28877284FC2FF00A66068 /* AppDelegate.swift in Sources */,
 				115FF8682854CA31009A0A08 /* Album.swift in Sources */,
 				116512B928523CBA00CE9ACC /* CustomCollectionCell.swift in Sources */,
+				115FF8702854F2B5009A0A08 /* SecondAlbum.swift in Sources */,
 				11C28892284FC77A00A66068 /* ThirdViewController.swift in Sources */,
 				11C2888F284FC6B500A66068 /* SecondViewController.swift in Sources */,
 				11C2888B284FC57400A66068 /* FirstViewController.swift in Sources */,
