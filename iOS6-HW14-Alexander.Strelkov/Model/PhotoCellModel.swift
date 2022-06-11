@@ -1,5 +1,5 @@
 //
-//  CustomCellModel.swift
+//  PhotoCellModel.swift
 //  iOS6-HW14-Alexander.Strelkov
 //
 //  Created by Alexandr Strelkov on 11.06.2022.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CustomCellModel: Hashable {
+class PhotoCellModel: Hashable {
     
     private let identifier = UUID()
     
@@ -22,7 +22,7 @@ class CustomCellModel: Hashable {
         self.subtitle = subtitle
     }
     
-    static func == (lhs: CustomCellModel, rhs: CustomCellModel) -> Bool {
+    static func == (lhs: PhotoCellModel, rhs: PhotoCellModel) -> Bool {
         return lhs.identifier == rhs.identifier
     }
     
