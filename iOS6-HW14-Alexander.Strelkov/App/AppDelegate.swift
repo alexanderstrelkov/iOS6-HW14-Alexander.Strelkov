@@ -16,20 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tapBarController = UITabBarController()
         
-        let firstViewController = FirstViewController()
-        firstViewController.tabBarItem = UITabBarItem(title: "Медиатека", image: UIImage(systemName:
-"photo.on.rectangle"), tag: 0)
+        let firstViewController = DefaultViewController()
+        firstViewController.tabBarItem = UITabBarItem(title: "Медиатека", image: UIImage(systemName: "photo.on.rectangle"), tag: 0)
         
-        let secondViewController = SecondViewController()
+        let secondViewController = DefaultViewController()
         secondViewController.tabBarItem = UITabBarItem(title: "Для Вас", image: UIImage(systemName: "heart.text.square"), tag: 1)
-
-        let thirdViewController = ThirdViewController()
+        
+        let thirdViewController = AlbumsViewController()
         let thirdNavigationController = UINavigationController(rootViewController: thirdViewController)
         thirdNavigationController.navigationBar.prefersLargeTitles = true
         thirdViewController.tabBarItem = UITabBarItem(title: "Альбомы", image: UIImage(systemName: "rectangle.stack.fill"), tag: 2)
         
-
-        let fourthViewController = FourthViewController()
+        let fourthViewController = DefaultViewController()
         fourthViewController.tabBarItem = UITabBarItem(title: "Поиск", image: UIImage(systemName: "magnifyingglass"), tag: 3)
         
         tapBarController.setViewControllers([
@@ -41,8 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = tapBarController
         window?.makeKeyAndVisible()
-        
         return true
     }
-
 }

@@ -1,5 +1,5 @@
 //
-//  ThirdViewController.swift
+//  AlbumsViewController.swift
 //  iOS6-HW14-Alexander.Strelkov
 //
 //  Created by Alexandr Strelkov on 07.06.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ThirdViewController: UIViewController {
+class AlbumsViewController: UIViewController {
     
     enum Section: Int, CaseIterable {
         case albumBody
@@ -25,9 +25,9 @@ class ThirdViewController: UIViewController {
     
     //MARK: - Views
     
-    var photoCollectionView: UICollectionView! = nil
+    var photoCollectionView: UICollectionView? = nil
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, Int>! = nil
+    var dataSource: UICollectionViewDiffableDataSource<Section, Int>? = nil
     
     //MARK: - Lifecycle
     
@@ -49,7 +49,6 @@ class ThirdViewController: UIViewController {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
     
     //MARK: - Settings
     
@@ -77,37 +76,48 @@ class ThirdViewController: UIViewController {
             return albumsSection()
         case .secondAlbumBody:
             return SecondAlbumsSection()
-        case .listBody:
+        case .listBody, .secondListBody:
             return listSection()
-        case .secondListBody:
-            return secondListSection()
         }
     }
     
     private func albumsSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        item.contentInsets = NSDirectionalEdgeInsets (top: 2, leading: 10, bottom: 2, trailing: 10)
+        item.contentInsets = NSDirectionalEdgeInsets (
+            top: 2,
+            leading: 10,
+            bottom: 2,
+            trailing: 10)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0))
         
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 2)
         
         group.interItemSpacing = .fixed(40.0)
         
-        let rootGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(350))
+        let rootGroupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(350))
         
         let rootGroup = NSCollectionLayoutGroup.horizontal(layoutSize: rootGroupSize, subitem: group, count: 2)
         
         rootGroup.interItemSpacing = .fixed(8.0)
         
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(44))
         
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
-            elementKind: AlbumsHeader.identifier, alignment: .top)
+            elementKind: AlbumsHeader.identifier,
+            alignment: .top)
         
         let section = NSCollectionLayoutSection(group: rootGroup)
         
@@ -118,25 +128,40 @@ class ThirdViewController: UIViewController {
     }
     
     private func SecondAlbumsSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        item.contentInsets = NSDirectionalEdgeInsets (top: 2, leading: 10, bottom: 2, trailing: 10)
+        item.contentInsets = NSDirectionalEdgeInsets (
+            top: 2,
+            leading: 10,
+            bottom: 2,
+            trailing: 10)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(175))
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(175))
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
-        group.contentInsets = .init(top: 2.0, leading: 2.0, bottom: 2.0, trailing: 2.0)
+        group.contentInsets = .init(
+            top: 2.0,
+            leading: 2.0,
+            bottom: 2.0,
+            trailing: 2.0)
         
         group.interItemSpacing = .fixed(8.0)
         
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(44))
         
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
-            elementKind: AlbumsHeader.identifier, alignment: .top)
+            elementKind: AlbumsHeader.identifier,
+            alignment: .top)
         
         let section = NSCollectionLayoutSection(group: group)
         
@@ -160,58 +185,35 @@ class ThirdViewController: UIViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(44))
         
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
-            elementKind: AlbumsHeader.identifier, alignment: .top)
+            elementKind: AlbumsHeader.identifier,
+            alignment: .top)
         
         section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
-    
-    private func secondListSection() -> NSCollectionLayoutSection {
-        
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(44))
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
-        let section = NSCollectionLayoutSection(group: group)
-        
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
-        
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: AlbumsHeader.identifier, alignment: .top)
-        
-        section.boundarySupplementaryItems = [sectionHeader]
-        return section
-    }
-    
     
     private lazy var photoRange: ClosedRange<Int> = 1...photoCells.count
     private lazy var secondPhotoRange: ClosedRange<Int> = (photoRange.upperBound + 1)...(photoRange.upperBound + secondPhotoCells.count)
     private lazy var listRange: ClosedRange<Int> = (secondPhotoRange.upperBound + 1)...(secondPhotoRange.upperBound + listCells.count)
     private lazy var secondListRange: ClosedRange<Int> = (listRange.upperBound + 1)...(listRange.upperBound + secondListCells.count)
     
-    private var photoCells: [Album] = Album.itemsForCells()
-    private var secondPhotoCells: [SecondAlbum] = SecondAlbum.itemsForCells()
-    private var listCells: [List] = List.itemsForCells()
-    private var secondListCells: [SecondList] = SecondList.itemsForCells()
+    private var photoCells: [CellSettings] = CellSettings.itemsForAlbumsCell()
+    private var secondPhotoCells: [CellSettings] = CellSettings.itemsForSecondAlbumsCell()
+    private var listCells: [CellSettings] = CellSettings.itemsForListsCell()
+    private var secondListCells: [CellSettings] = CellSettings.itemsForSecondListsCell()
     
     func configureDataSource() {
         
-        dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: photoCollectionView) { [self]
+        dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: photoCollectionView ?? UICollectionView() ) { [self]
             (collectionView: UICollectionView, indexPath: IndexPath, identifier: Int) -> UICollectionViewCell? in
             
-            dataSource.supplementaryViewProvider = { (
+            dataSource?.supplementaryViewProvider = { (
                 collectionView: UICollectionView,
                 kind: String,
                 indexPath: IndexPath) -> UICollectionReusableView? in
@@ -233,7 +235,7 @@ class ThirdViewController: UIViewController {
             }
             
             if self.secondPhotoRange ~= identifier {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SecondCollectionViewCell.identifier, for: indexPath) as? SecondCollectionViewCell else { fatalError("Cannot create the cell") }
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell else { fatalError("Cannot create the cell") }
                 let secondPhotoCells = self.secondPhotoCells[indexPath.row]
                 cell.configureCell(titleText: secondPhotoCells.title, subtitleText: secondPhotoCells.subtitle, image: secondPhotoCells.image)
                 return cell
@@ -242,14 +244,14 @@ class ThirdViewController: UIViewController {
             if self.listRange ~= identifier {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.identifier, for: indexPath) as? ListCollectionViewCell else { fatalError("Cannot create the cell") }
                 let listCells = self.listCells[indexPath.row]
-                cell.configureCell(titleText: listCells.title, detailText: listCells.detail, image: listCells.image)
+                cell.configureCell(titleText: listCells.title, detailText: listCells.subtitle, image: listCells.image)
                 return cell
             }
             
             if self.secondListRange ~= identifier {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SecondListCollectionViewCell.identifier, for: indexPath) as? SecondListCollectionViewCell else { fatalError("Cannot create the cell") }
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.identifier, for: indexPath) as? ListCollectionViewCell else { fatalError("Cannot create the cell") }
                 let secondListCells = self.secondListCells[indexPath.row]
-                cell.configureCell(titleText: secondListCells.title, detailText: secondListCells.detail, image: secondListCells.image)
+                cell.configureCell(titleText: secondListCells.title, detailText: secondListCells.subtitle, image: secondListCells.image)
                 return cell
             }
             fatalError("Cannot create the cell")
@@ -265,20 +267,18 @@ class ThirdViewController: UIViewController {
         snapshot.appendItems(Array(listRange))
         snapshot.appendSections([sections[3]])
         snapshot.appendItems(Array(secondListRange))
-        self.dataSource.apply(snapshot, animatingDifferences: false)
+        self.dataSource?.apply(snapshot, animatingDifferences: false)
     }
 }
 
-extension ThirdViewController {
+extension AlbumsViewController {
     func configureCollectionView() {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         view.addSubview(collectionView)
         collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         collectionView.backgroundColor = .systemBackground
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
-        collectionView.register(SecondCollectionViewCell.self, forCellWithReuseIdentifier: SecondCollectionViewCell.identifier)
         collectionView.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: ListCollectionViewCell.identifier)
-        collectionView.register(SecondListCollectionViewCell.self, forCellWithReuseIdentifier: SecondListCollectionViewCell.identifier)
         collectionView.register(AlbumsHeader.self, forSupplementaryViewOfKind: AlbumsHeader.identifier, withReuseIdentifier: AlbumsHeader.identifier)
         photoCollectionView = collectionView
     }

@@ -17,8 +17,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        setupHierarhy()
+        setupLayout()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -27,25 +29,29 @@ class CustomCollectionViewCell: UICollectionViewCell {
         title.text = titleText
         subtitle.text = subtitleText
         imageView.image = image
-}
-
-
+    }
 }
 
 extension CustomCollectionViewCell {
-    func configure() {
-        contentContainer.translatesAutoresizingMaskIntoConstraints = false
+    
+    func setupHierarhy() {
         contentView.addSubview(contentContainer)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        title.translatesAutoresizingMaskIntoConstraints = false
-        subtitle.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 12
-        subtitle.textColor = .lightGray
         contentContainer.addSubview(imageView)
         contentContainer.addSubview(title)
         contentContainer.addSubview(subtitle)
+    }
+    
+    func setupLayout() {
+        contentContainer.translatesAutoresizingMaskIntoConstraints = false
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 12
+        
+        title.translatesAutoresizingMaskIntoConstraints = false
+        subtitle.translatesAutoresizingMaskIntoConstraints = false
+        subtitle.textColor = .lightGray
         
         NSLayoutConstraint.activate([
             contentContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -60,7 +66,7 @@ extension CustomCollectionViewCell {
             
             title.topAnchor.constraint(equalTo: imageView.bottomAnchor),
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-          
+            
             subtitle.topAnchor.constraint(equalTo: title.bottomAnchor),
             subtitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
         ])
